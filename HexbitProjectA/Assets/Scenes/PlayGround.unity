@@ -1176,7 +1176,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80ef08ace0cd75843b5278b57a6c1135, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  yourUIButton: {fileID: 0}
+  UIText: {fileID: 0}
 --- !u!61 &1909269737
 BoxCollider2D:
   m_ObjectHideFlags: 0
