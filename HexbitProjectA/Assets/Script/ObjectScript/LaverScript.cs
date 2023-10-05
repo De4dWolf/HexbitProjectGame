@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,6 +10,8 @@ public class LaverScript : MonoBehaviour
     private bool playerInside = false;
     public GameObject UIText;
     public GameObject pintu;
+    
+  
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
@@ -48,6 +51,8 @@ public class LaverScript : MonoBehaviour
         {
             Debug.Log("player menyalakan laver");
             dooropen();
+            transform.localRotation = quaternion.RotateZ(20);
         }
+      
     }
 }
