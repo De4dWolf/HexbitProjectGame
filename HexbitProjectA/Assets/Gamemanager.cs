@@ -4,26 +4,32 @@ using UnityEngine;
 
 public class Gamemanager : MonoBehaviour
 {
-
-    [SerializeField] private GameObject playermodel;
+    [SerializeField] private GameObject playerPrefab;
     [SerializeField] private Transform spawnpoint;
     [SerializeField] private int currentCheckpoint;
     public GameObject[] checkPoints;
+    private GameObject playerInstance;
+
     void Start()
     {
-        Load();
         SpawnPlayer();
+        Load();
+        
     }
 
-    
     void Update()
     {
-       
+        // Add any other game management logic here.
     }
 
     private void SpawnPlayer()
     {
-        Instantiate(playermodel, checkPoints[currentCheckpoint].transform.position, checkPoints[currentCheckpoint].transform.rotation);
+        if (playerInstance != null)
+        {
+            Destroy(playerInstance); // Destroy the existing player object if it exists.
+        }
+
+        playerInstance = Instantiate(playerPrefab, checkPoints[currentCheckpoint].transform.position, Quaternion.identity);
     }
 
     private void Load()

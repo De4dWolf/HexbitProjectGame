@@ -37,7 +37,15 @@ public class PlayerController : MonoBehaviour
         float moveX = Input.GetAxis("Horizontal");
         rb.velocity = new Vector2(moveX * moveSpeed, rb.velocity.y);
 
-        //Debug.DrawRay(groundCheck.position, Vector2.down * groundCheckRadius, Color.red);
+        if (moveX < 0)
+        {
+           transform.localScale = new Vector3(-1, 1, 1);
+        }
+        else
+        {
+            transform.localScale = new Vector3(1, 1, 1);
+        }
+        
 
         // Melompat jika pemain menekan tombol lompat dan karakter berada di atas tanah.
         if (isGrounded && Input.GetButtonDown("Jump"))
