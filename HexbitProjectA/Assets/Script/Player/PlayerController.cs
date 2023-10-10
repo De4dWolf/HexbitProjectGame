@@ -41,7 +41,7 @@ public class PlayerController : MonoBehaviour
         {
            transform.localScale = new Vector3(-1, 1, 1);
         }
-        else
+        else if (moveX > 0)
         {
             transform.localScale = new Vector3(1, 1, 1);
         }

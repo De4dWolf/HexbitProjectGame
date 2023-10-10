@@ -10,8 +10,9 @@ public class LaverScript : MonoBehaviour
     private bool playerInside = false;
     public GameObject UIText;
     public GameObject pintu;
-    
-  
+    private Animator anim;
+
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
@@ -33,15 +34,15 @@ public class LaverScript : MonoBehaviour
         }
     }
 
-    private void dooropen()
-    {
-        pintu.SetActive(false);
-    }
 
    
     void Start()
     {
-        
+        anim = pintu.GetComponent<Animator>();
+        if (anim == null)
+        {
+            Debug.LogError("Animasi Blm ada");
+        }
     }
 
     
@@ -50,8 +51,9 @@ public class LaverScript : MonoBehaviour
         if (playerInside && Input.GetKeyDown(KeyCode.E))
         {
             Debug.Log("player menyalakan laver");
-            dooropen();
             transform.localRotation = quaternion.RotateZ(20);
+            anim.SetTrigger("Buka");
+
         }
       
     }
