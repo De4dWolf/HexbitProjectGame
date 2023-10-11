@@ -4,15 +4,20 @@ using UnityEngine;
 
 public class RespawnPlayer : MonoBehaviour
 {
-    // Start is called before the first frame update
+    private GameObject pemain;
     void Start()
     {
-        
+        RespawnPemain();
     }
 
-    // Update is called once per frame
-    void Update()
+   public void RespawnPemain()
     {
-        
+        pemain = FindObjectOfType<PlayerController>().gameObject;
+        pemain.transform.position = transform.position;
+    }
+
+    public void GameOver()
+    {
+
     }
 }

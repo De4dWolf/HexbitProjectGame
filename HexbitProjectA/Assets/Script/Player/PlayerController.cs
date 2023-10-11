@@ -58,5 +58,7 @@ public class PlayerController : MonoBehaviour
         {
             CharacterControl2.SetActive(false);
         }
+
+
     }
 }

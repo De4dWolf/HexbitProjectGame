@@ -11,6 +11,7 @@ public class LaverScript : MonoBehaviour
     public GameObject UIText;
     public GameObject pintu;
     private Animator anim;
+    public GameObject Camera2;
 
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -53,6 +54,7 @@ public class LaverScript : MonoBehaviour
             Debug.Log("player menyalakan laver");
             transform.localRotation = quaternion.RotateZ(20);
             anim.SetTrigger("Buka");
+            GameManager.instance.camerachange(Camera2);
 
         }
       
