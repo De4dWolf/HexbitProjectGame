@@ -14,7 +14,7 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D rb;
     public GameObject CharacterControl2;
 
-    
+    private bool grabbing = false;
 
     void Start()
     {
@@ -36,19 +36,20 @@ public class PlayerController : MonoBehaviour
         // Mengontrol pergerakan karakter.
         float moveX = Input.GetAxis("Horizontal");
         rb.velocity = new Vector2(moveX * moveSpeed, rb.velocity.y);
-
-        if (moveX < 0)
+        if (!grabbing)
         {
-           transform.localScale = new Vector3(-1, 1, 1);
+            if (moveX < 0)
+            {
+                transform.localScale = new Vector3(-1, 1, 1);
+            }
+            else if (moveX > 0)
+            {
+                transform.localScale = new Vector3(1, 1, 1);
+            }
         }
-        else if (moveX > 0)
-        {
-            transform.localScale = new Vector3(1, 1, 1);
-        }
-        
 
         // Melompat jika pemain menekan tombol lompat dan karakter berada di atas tanah.
-        if (isGrounded && Input.GetButtonDown("Jump"))
+        if (isGrounded && Input.GetButtonDown("Jump") && !grabbing)
         {
             rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
 
@@ -60,5 +61,23 @@ public class PlayerController : MonoBehaviour
         }
 
 
+    }
+
+    //GrabObjects
+    private void OnTriggerStay2D(Collider2D other)
+    {
+        if (other.CompareTag("Box") && Input.GetKey(KeyCode.F))
+        {
+            grabbing = true;
+            other.gameObject.GetComponent<DragObjects>().boxgrab();
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.CompareTag("Box"))
+        {
+            grabbing = false;
+        }
     }
 }
