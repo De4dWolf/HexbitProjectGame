@@ -13,6 +13,8 @@ public class LaverScript : MonoBehaviour
     private Animator anim;
     public GameObject Camera2;
 
+    public Door door;
+
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -39,24 +41,33 @@ public class LaverScript : MonoBehaviour
    
     void Start()
     {
-        anim = pintu.GetComponent<Animator>();
+       /* anim = pintu.GetComponent<Animator>();
         if (anim == null)
         {
             Debug.LogError("Animasi Blm ada");
-        }
+        }*/
     }
 
-    
     void Update()
     {
         if (playerInside && Input.GetKeyDown(KeyCode.E))
         {
+            StartCoroutine(OpenDoorGradually());
             Debug.Log("player menyalakan laver");
             transform.localRotation = quaternion.RotateZ(20);
-            anim.SetTrigger("Buka");
-            GameManager.instance.camerachange(Camera2);
-
+           // anim.SetTrigger("Buka");
+            GameManager.instance.camerachange(Camera2);  
         }
-      
+    }
+
+    IEnumerator OpenDoorGradually()
+    {
+        if (door != null)
+        {
+            door.dooropen();
+        }
+
+        yield return new WaitForSeconds(1.0f); // Adjust the time it takes to fully open the door
+        Debug.Log("Door is fully open");
     }
 }
