@@ -6,6 +6,7 @@ TagManager:
   tags:
   - button
   - Box
+  - Teleport
   layers:
   - Default
   - TransparentFX
