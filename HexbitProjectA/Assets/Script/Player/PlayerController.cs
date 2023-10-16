@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-
+    private float moveX;
     public float moveSpeed = 5f;
     public float jumpForce = 5f;
     public Transform groundCheck;
@@ -14,17 +14,30 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D rb;
     public GameObject CharacterControl2;
 
-    private bool grabbing = false;
+    private Animator anim;
+    private bool isWalking;
+    private bool isGrab;
+    private bool isPull;
+    private bool isPush;
+
+    private bool hadapKanan = true;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        anim = GetComponent<Animator>();
     }
 
 
     void Update()
     {
         movement();
+        anim.SetBool("isWalking", isWalking);
+        anim.SetFloat("yVelocity", rb.velocity.y);
+        anim.SetBool("isGrounded", isGrounded);
+        anim.SetBool("isGrab", isGrab);
+        anim.SetBool("isPull", isPull);
+        anim.SetBool("isPush", isPush);
     }
 
 
@@ -34,22 +47,31 @@ public class PlayerController : MonoBehaviour
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer,boxlayer);
 
         // Mengontrol pergerakan karakter.
-        float moveX = Input.GetAxis("Horizontal");
+        moveX = Input.GetAxis("Horizontal");
         rb.velocity = new Vector2(moveX * moveSpeed, rb.velocity.y);
-        if (!grabbing)
+        if (!isGrab)
         {
-            if (moveX < 0)
+            if (hadapKanan && moveX < 0)
             {
-                transform.localScale = new Vector3(-1, 1, 1);
+                Flip();
             }
-            else if (moveX > 0)
+            else if (!hadapKanan && moveX > 0)
             {
-                transform.localScale = new Vector3(1, 1, 1);
+                Flip();
+            }
+            if(moveX == 0)
+            {
+                rb.velocity = new Vector2(0, rb.velocity.y);
+                isWalking = false;
+            }
+            else
+            {
+                isWalking = true;
             }
         }
 
         // Melompat jika pemain menekan tombol lompat dan karakter berada di atas tanah.
-        if (isGrounded && Input.GetButtonDown("Jump") && !grabbing)
+        if (isGrounded && Input.GetButtonDown("Jump") && !isGrab)
         {
             rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
 
@@ -59,25 +81,51 @@ public class PlayerController : MonoBehaviour
         {
             CharacterControl2.SetActive(false);
         }
+    }
 
-
+    private void Flip()
+    {
+        hadapKanan = !hadapKanan;
+        transform.Rotate(0.0f, 180.0f, 0.0f);
     }
 
     //GrabObjects
     private void OnTriggerStay2D(Collider2D other)
     {
-        if (other.CompareTag("Box") && Input.GetKey(KeyCode.F))
-        {
-            grabbing = true;
-            other.gameObject.GetComponent<DragObjects>().boxgrab();
-        }
-    }
-
-    private void OnTriggerExit2D(Collider2D other)
-    {
         if (other.CompareTag("Box"))
         {
-            grabbing = false;
+            if (Input.GetKey(KeyCode.F))
+            {
+                isGrab = true;
+                other.gameObject.GetComponent<DragObjects>().boxgrab();
+
+                if (hadapKanan && moveX < 0)
+                {
+                    isPull = true;
+                }
+                else if (hadapKanan && moveX > 0)
+                {
+                    isPush = true;
+                }
+                else if (!hadapKanan && moveX < 0)
+                {
+                    isPush = true;
+                }
+                else if (!hadapKanan && moveX > 0)
+                {
+                    isPull = true;
+                }
+                else
+                {
+                    isPush = false;
+                    isPull = false;
+                }
+            }
+            else
+            {
+                isGrab = false;
+            }
         }
+                
     }
 }
