@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour
     public float moveSpeed = 5f;
     public float jumpForce = 5f;
     public Transform groundCheck;
-    public LayerMask groundLayer,boxlayer;
+    public LayerMask groundLayer, boxlayer;
     private bool isGrounded;
     private float groundCheckRadius = 0.2f;
     private Rigidbody2D rb;
@@ -21,6 +21,10 @@ public class PlayerController : MonoBehaviour
     private bool isPush;
 
     private bool hadapKanan = true;
+
+    private float verticalmove;
+    private bool isOnLadder;
+    private bool isClimbing;
 
     void Start()
     {
@@ -38,13 +42,32 @@ public class PlayerController : MonoBehaviour
         anim.SetBool("isGrab", isGrab);
         anim.SetBool("isPull", isPull);
         anim.SetBool("isPush", isPush);
+
+        verticalmove = Input.GetAxis("Vertical");
+        if (isOnLadder && Mathf.Abs(verticalmove) > 0f)
+        {
+            isClimbing = true;
+        }
+    }
+
+    private void FixedUpdate()
+    {
+        if (isClimbing)
+        {
+            rb.gravityScale = 0f;
+            rb.velocity = new Vector2(rb.velocity.x, verticalmove * moveSpeed);
+        }
+        else
+        {
+             rb.gravityScale = 5f;
+        }
     }
 
 
     private void movement()
     {
         // Deteksi apakah karakter berada di atas tanah.
-        isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer,boxlayer);
+        isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer, boxlayer);
 
         // Mengontrol pergerakan karakter.
         moveX = Input.GetAxis("Horizontal");
@@ -59,7 +82,7 @@ public class PlayerController : MonoBehaviour
             {
                 Flip();
             }
-            if(moveX == 0)
+            if (moveX == 0)
             {
                 rb.velocity = new Vector2(0, rb.velocity.y);
                 isWalking = false;
@@ -126,6 +149,26 @@ public class PlayerController : MonoBehaviour
                 isGrab = false;
             }
         }
-                
+
+    }
+
+    //tangga code
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Tangga"))
+        {
+            isOnLadder = true;
+            Debug.Log("player berada di tangga");
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if(collision.CompareTag("Tangga"))
+        {
+            isOnLadder = false;
+            isClimbing = false;
+            Debug.Log("player keluar tangga");
+        }
     }
 }
