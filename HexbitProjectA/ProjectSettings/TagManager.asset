@@ -7,6 +7,10 @@ TagManager:
   - button
   - Box
   - Teleport
+  - Void
+  - CheckPoint
+  - Tangga
+  - Ground
   layers:
   - Default
   - TransparentFX
@@ -14,10 +18,10 @@ TagManager:
   - Ground
   - Water
   - UI
-  - Player
+  - Ladder
   - Pet
   - Objects
-  - 
+  - Player
   - 
   - 
   - 
@@ -43,6 +47,9 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Ladder
+    uniqueID: 759151523
     locked: 0
   - name: Player
     uniqueID: 1786545343
