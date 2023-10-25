@@ -54,7 +54,7 @@ public class LaverScript : MonoBehaviour
         {
             StartCoroutine(OpenDoorGradually());
             Debug.Log("player menyalakan laver");
-            transform.localRotation = quaternion.RotateZ(20);
+            transform.localRotation = quaternion.RotateY(160);
            // anim.SetTrigger("Buka");
             GameManager.instance.camerachange(Camera2);  
         }
