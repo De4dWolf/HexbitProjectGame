@@ -11,6 +11,9 @@ public class PlayerManager : MonoBehaviour
 
     private Vector3 RespawnPemain;
 
+    [SerializeField] private UIManager _UIManager;
+    [SerializeField] private int redKey;
+    [SerializeField] private int blackKey;
 
     void Start()
     {
@@ -42,5 +45,26 @@ public class PlayerManager : MonoBehaviour
         Debug.Log("anda mati");
     }*/
 
-    
+    public int RedKey { 
+        get 
+        { 
+            return redKey; 
+        } 
+        set 
+        {
+            redKey = value;
+        }
+    }
+
+    public int BlackKey
+    {
+        get
+        {
+            return blackKey;
+        }
+        set
+        {
+            blackKey = value;
+        }
+    }
 }
