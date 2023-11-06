@@ -97,7 +97,6 @@ public class PlayerController : MonoBehaviour
         if (isGrounded && Input.GetButtonDown("Jump") && !isGrab)
         {
             rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
-
         }
 
         if (Input.GetKeyDown(KeyCode.I))

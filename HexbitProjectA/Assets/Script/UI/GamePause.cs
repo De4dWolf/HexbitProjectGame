@@ -6,7 +6,9 @@ using UnityEngine.SceneManagement;
 public class GamePause : MonoBehaviour
 {
     [SerializeField] GameObject pauseMenu;
+    [SerializeField] GameObject optionsMenu;
     [SerializeField] GameObject concedeMenu;
+    
     public static bool isPaused = false;
     void Update()
     {
@@ -19,6 +21,7 @@ public class GamePause : MonoBehaviour
             {
                 Resume();
                 concedeMenu.SetActive(false);
+                optionsMenu.SetActive(false);
             }
         }
     }
@@ -35,18 +38,34 @@ public class GamePause : MonoBehaviour
         isPaused = false;
         Time.timeScale = 1;
         pauseMenu.SetActive(false);
+        optionsMenu.SetActive(false);
         concedeMenu.SetActive(false);
     }
 
     public void Concede()
     {
         pauseMenu.SetActive(false);
+        optionsMenu.SetActive(false);
         concedeMenu.SetActive(true);
+    }
+
+    public void Options()
+    {
+        pauseMenu.SetActive(false);
+        optionsMenu.SetActive(true);
+        concedeMenu.SetActive(false);
     }
 
     public void Quit()
     {
         SceneManager.LoadScene("StartMenu");
         Time.timeScale = 1;
+    }
+
+    public void Back()
+    {
+        pauseMenu.SetActive(true);
+        optionsMenu.SetActive(false);
+        concedeMenu.SetActive(false);
     }
 }
