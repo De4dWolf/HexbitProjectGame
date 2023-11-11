@@ -15,6 +15,7 @@ public class LaverScript : MonoBehaviour
 
     public Door door;
 
+    public AudioSource SFX;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -52,11 +53,12 @@ public class LaverScript : MonoBehaviour
     {
         if (playerInside && Input.GetKeyDown(KeyCode.E))
         {
+            SFX.Play();
             StartCoroutine(OpenDoorGradually());
             Debug.Log("player menyalakan laver");
             transform.localRotation = quaternion.RotateY(160);
            // anim.SetTrigger("Buka");
-            GameManager.instance.camerachange(Camera2);  
+            GameManager.instance.camerachange(Camera2);
         }
     }
 
