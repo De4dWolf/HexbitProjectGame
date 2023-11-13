@@ -8,6 +8,7 @@ public class UIManager : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI redKeyText;
     [SerializeField] private TextMeshProUGUI blackKeyText;
+    [SerializeField] private TextMeshProUGUI coinText;
     public static UIManager Instance;
 
     private void Awake()
@@ -24,5 +25,10 @@ public class UIManager : MonoBehaviour
         {
             blackKeyText.text = "x " + value.ToString();
         }
+    }
+
+    public void UpdateCoin(float value) 
+    {
+        coinText.text = value.ToString();
     }
 }

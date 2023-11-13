@@ -14,7 +14,7 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] private UIManager _UIManager;
     [SerializeField] private int redKey;
     [SerializeField] private int blackKey;
-
+    public int coin;
     void Start()
     {
       RespawnPemain = transform.position;
@@ -67,4 +67,6 @@ public class PlayerManager : MonoBehaviour
             blackKey = value;
         }
     }
+
+
 }
