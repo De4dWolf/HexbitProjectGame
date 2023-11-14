@@ -4,6 +4,12 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    [SerializeField] private DialogueUI dialogueUI;
+
+    public DialogueUI DialogueUI => dialogueUI;
+
+    public Interaksi Interaksi { get; set; }
+
     private float moveX;
     public float moveSpeed = 5f;
     public float jumpForce = 5f;
@@ -35,6 +41,13 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        if (dialogueUI.IsOpen) return;
+
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            Interaksi?.Interact(this);
+        }
+
         movement();
         anim.SetBool("isWalking", isWalking);
         anim.SetFloat("yVelocity", rb.velocity.y);

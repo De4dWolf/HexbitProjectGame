@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 907145d66997b7949aef919b48e65bea, type: 3}
+  m_Name: Papan
+  m_EditorClassIdentifier: 
+  dialogue:
+  - Tutor
+  - Dialog panjang gdfjks gsdlfgj dlfs;gjkf ;ldsjl;fdjsgldfjs gpdsj gdslkg jd; lsfgjk;lsdf
+    gjl;sd jgd;ls gkjdfgj odgsjoijmg; mdosfi gjmods; fjgosd fgi ds gjdsfigdsg dpsfgikjhoaherw
+    fei ruhdsghdufh sgudfh guidhsfgujdfhngi hdsfg hdsfiughdsfgdufish gd
+  - 'Jelas?
+
+    Dialog enter
+
+    sdfhgf
+
+    fghdfghf
+
+    dfhfgh
+
+    dfghfg'
+  responses:
+  - responseText: Yes
+    dialogueObject: {fileID: 11400000, guid: 33c5637b3182041479f759c1efd620ca, type: 2}
+  - responseText: No
+    dialogueObject: {fileID: 11400000}
