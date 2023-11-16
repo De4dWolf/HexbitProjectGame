@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -8,12 +9,14 @@ public class GamePause : MonoBehaviour
     [SerializeField] GameObject pauseMenu;
     [SerializeField] GameObject optionsMenu;
     [SerializeField] GameObject concedeMenu;
+    [SerializeField] GameObject Player;
     
     public static bool isPaused = false;
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
+            movementcancel();
             if (!isPaused)
             {
                 Pause();
@@ -24,6 +27,20 @@ public class GamePause : MonoBehaviour
                 optionsMenu.SetActive(false);
             }
         }
+    }
+
+    
+
+    void movementcancel()
+    {
+        PlayerController Scripttodisable = Player.GetComponent<PlayerController>();
+        Scripttodisable.enabled = false;
+    }
+
+    void movementenable()
+    {
+        PlayerController Scripttodisable = Player.GetComponent<PlayerController>();
+        Scripttodisable.enabled = true;
     }
 
     void Pause()
@@ -37,6 +54,7 @@ public class GamePause : MonoBehaviour
     {
         isPaused = false;
         Time.timeScale = 1;
+        movementenable();
         pauseMenu.SetActive(false);
         optionsMenu.SetActive(false);
         concedeMenu.SetActive(false);

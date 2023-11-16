@@ -41,6 +41,9 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        
+
+
         if (dialogueUI.IsOpen) return;
 
         if (Input.GetKeyDown(KeyCode.E))
@@ -49,12 +52,7 @@ public class PlayerController : MonoBehaviour
         }
 
         movement();
-        anim.SetBool("isWalking", isWalking);
-        anim.SetFloat("yVelocity", rb.velocity.y);
-        anim.SetBool("isGrounded", isGrounded);
-        anim.SetBool("isGrab", isGrab);
-        anim.SetBool("isPull", isPull);
-        anim.SetBool("isPush", isPush);
+
 
         verticalmove = Input.GetAxis("Vertical");
         if (isOnLadder && Mathf.Abs(verticalmove) > 0f)
@@ -65,6 +63,14 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
+        
+        anim.SetBool("isWalking", isWalking);
+        anim.SetFloat("yVelocity", rb.velocity.y);
+        anim.SetBool("isGrounded", isGrounded);
+        anim.SetBool("isGrab", isGrab);
+        anim.SetBool("isPull", isPull);
+        anim.SetBool("isPush", isPush);
+
         if (isClimbing)
         {
             rb.gravityScale = 0f;
@@ -134,24 +140,38 @@ public class PlayerController : MonoBehaviour
                 isGrab = true;
                 other.gameObject.GetComponent<DragObjects>().boxgrab();
 
-                if (hadapKanan && moveX < 0)
+                if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
                 {
-                    isPull = true;
-                }
-                else if (hadapKanan && moveX > 0)
-                {
-                    isPush = true;
-                }
-                else if (!hadapKanan && moveX < 0)
-                {
-                    isPush = true;
-                }
-                else if (!hadapKanan && moveX > 0)
-                {
-                    isPull = true;
+                    // Hanya jalankan animasi isPull atau isPush jika tombol A atau D ditekan
+                    if (hadapKanan && moveX < 0)
+                    {
+                        isPull = true;
+                        isPush = false;
+                    }
+                    else if (hadapKanan && moveX > 0)
+                    {
+                        isPush = true;
+                        isPull = false;
+                    }
+                    else if (!hadapKanan && moveX < 0)
+                    {
+                        isPush = true;
+                        isPull = false;
+                    }
+                    else if (!hadapKanan && moveX > 0)
+                    {
+                        isPull = true;
+                        isPush = false;
+                    }
+                    else
+                    {
+                        isPush = false;
+                        isPull = false;
+                    }
                 }
                 else
                 {
+                    // Jika tombol F ditekan tetapi tombol A atau D tidak ditekan, atur animasi menjadi false
                     isPush = false;
                     isPull = false;
                 }
@@ -159,10 +179,16 @@ public class PlayerController : MonoBehaviour
             else
             {
                 isGrab = false;
+                isPush = false;
+                isPull = false;
             }
         }
-
     }
+
+
+
+
+
 
     //tangga code
     private void OnTriggerEnter2D(Collider2D collision)
