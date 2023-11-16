@@ -23,13 +23,17 @@ public class PlayerManager : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag == "Void")
-        {
-            transform.position = RespawnPemain;
-        }
-        else if (collision.tag == "CheckPoint")
+        if (collision.tag == "CheckPoint")
         {
             RespawnPemain = transform.position;
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.tag == "Void")
+        {
+            transform.position = RespawnPemain;
         }
     }
 
