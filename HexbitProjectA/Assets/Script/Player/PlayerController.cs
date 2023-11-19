@@ -74,7 +74,7 @@ public class PlayerController : MonoBehaviour
         if (isClimbing)
         {
             rb.gravityScale = 0f;
-            rb.velocity = new Vector2(rb.velocity.x, verticalmove * moveSpeed);
+            rb.velocity = new Vector2(rb.velocity.x, verticalmove * 2);
         }
         else
         {
@@ -186,7 +186,10 @@ public class PlayerController : MonoBehaviour
     }
 
 
-
+    public void ApplySpeedBoost(float newMoveSpeed)
+    {
+        moveSpeed = newMoveSpeed;
+    }
 
 
 
