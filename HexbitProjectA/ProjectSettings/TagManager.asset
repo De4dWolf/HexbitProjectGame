@@ -12,6 +12,7 @@ TagManager:
   - Tangga
   - Ground
   - Coin
+  - OneWayPlatform
   layers:
   - Default
   - TransparentFX
