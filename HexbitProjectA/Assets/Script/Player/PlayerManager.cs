@@ -7,6 +7,7 @@ public class PlayerManager : MonoBehaviour
 {
 
     [SerializeField] private float fallHeightThreshold = 10f;
+    [SerializeField] GameObject Blackbar;
     private bool isFalling = false;
 
     private Vector3 RespawnPemain;
@@ -33,9 +34,24 @@ public class PlayerManager : MonoBehaviour
     {
         if (other.gameObject.tag == "Void")
         {
-            transform.position = RespawnPemain;
+            Blackbar.SetActive(true);
+            Invoke("RespawnPlayerWithDelay", 0.7f);
+            Invoke("disableBlackbar", 2.0f);
         }
     }
+
+    private void RespawnPlayerWithDelay()
+    {
+        transform.position = RespawnPemain;
+    }
+
+    private void disableBlackbar()
+    {
+        Blackbar.SetActive(false);
+    }
+
+
+
 
     // Update is called once per frame
     void Update()
