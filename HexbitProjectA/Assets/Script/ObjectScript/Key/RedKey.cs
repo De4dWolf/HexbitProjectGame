@@ -8,14 +8,10 @@ public class RedKey : Key
     {
         if (collision.CompareTag("Player"))
         {
+            IsCollected = true;
             player.RedKey += 1;
             GetComponent<CircleCollider2D>().enabled = false;
-            UIManager.Instance.UpdateKey(player.RedKey, "red");
             /*GetComponent<Animator>().SetTrigger("Picked");*/ // Destroy animation 
         }
     }
 }
-
-// TO DO :
-// 1. Sprite
-// 2. Animation

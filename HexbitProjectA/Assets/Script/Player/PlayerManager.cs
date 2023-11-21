@@ -13,8 +13,8 @@ public class PlayerManager : MonoBehaviour
     private Vector3 RespawnPemain;
 
     [SerializeField] private UIManager _UIManager;
-    [SerializeField] private int redKey;
-    [SerializeField] private int blackKey;
+    [SerializeField] private int _redkey;
+    [SerializeField] private int _blackkey;
     public int coin;
     void Start()
     {
@@ -68,11 +68,12 @@ public class PlayerManager : MonoBehaviour
     public int RedKey { 
         get 
         { 
-            return redKey; 
+            return _redkey; 
         } 
         set 
         {
-            redKey = value;
+            _redkey = value;
+            UIManager.Instance.UpdateKey(_redkey, "red");
         }
     }
 
@@ -80,11 +81,12 @@ public class PlayerManager : MonoBehaviour
     {
         get
         {
-            return blackKey;
+            return _blackkey;
         }
         set
         {
-            blackKey = value;
+            _blackkey = value;
+            UIManager.Instance.UpdateKey(_blackkey, "black");
         }
     }
 
