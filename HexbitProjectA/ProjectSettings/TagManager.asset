@@ -24,7 +24,7 @@ TagManager:
   - Pet
   - Objects
   - Player
-  - 
+  - Air
   - 
   - 
   - 
@@ -52,6 +52,9 @@ TagManager:
     locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Air
+    uniqueID: 453678029
     locked: 0
   - name: Ground
     uniqueID: 1087893501
