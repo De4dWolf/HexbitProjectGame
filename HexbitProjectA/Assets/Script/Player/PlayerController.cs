@@ -4,12 +4,6 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] private DialogueUI dialogueUI;
-
-    public DialogueUI DialogueUI => dialogueUI;
-
-    public Interaksi Interaksi { get; set; }
-
     private float moveX;
     public float moveSpeed = 5f;
     public float jumpForce = 5f;
@@ -41,18 +35,13 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        
-
-
-        if (dialogueUI.IsOpen) return;
-
-        if (Input.GetKeyDown(KeyCode.E))
+        if (DialogueManager.Instance.isDialogueActive)
         {
-            Interaksi?.Interact(this);
+            moveX = 0;
+            return;
         }
 
         movement();
-
 
         verticalmove = Input.GetAxis("Vertical");
         if (isOnLadder && Mathf.Abs(verticalmove) > 0f)
