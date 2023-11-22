@@ -9,7 +9,7 @@ public class MenuScript : MonoBehaviour
 
     public void Playgame()
     {
-        SceneManager.LoadScene("PlayGround");
+        SceneManager.LoadScene("Level 1");
     }
 
     public void Options()
