@@ -177,7 +177,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ef69402233487045ae0205d6287a74f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactive: 1
+  interactive: 0
   splashInfluence: 0.5
   waveHeight: 0.25
   hasConstantWaves: 1

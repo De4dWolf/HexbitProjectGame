@@ -9,21 +9,28 @@ public class MenuScript : MonoBehaviour
 
     public void Playgame()
     {
-        SceneManager.LoadScene("Level 1");
+        this.Wait(0.5f, () =>
+        {
+            SceneManager.LoadScene("Level 1");
+        });
     }
 
     public void Options()
     {
-        optionsMenu.SetActive(true);
+        this.Wait(0.5f, () =>
+        optionsMenu.SetActive(true));
+
     }
 
     public void CreditScene()
     {
-        SceneManager.LoadScene("Credit");
+        this.Wait(0.5f, () =>
+        SceneManager.LoadScene("Credit"));
     }
 
     public void Back()
     {
-        optionsMenu.SetActive(false);
+        this.Wait(0.5f, () =>
+        optionsMenu.SetActive(false));
     }
 }

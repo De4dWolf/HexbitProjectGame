@@ -8,7 +8,7 @@ public class DialogueManager : MonoBehaviour
 {
     public static DialogueManager Instance;
 
-	public Image characterIconKanan;
+    public Image characterIconKanan;
     public Image characterIconKiri;
     public TextMeshProUGUI characterName;
     public TextMeshProUGUI dialogueArea;
@@ -31,15 +31,20 @@ public class DialogueManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-            DisplayNextDialogueLine();
+		if (isDialogueActive)
+		{
+            if (Input.GetKeyDown(KeyCode.Space))
+			{
+                DisplayNextDialogueLine();
+            }   
+        }
     }
 
     public void StartDialogue(Dialogue dialogue)
 	{
-		isDialogueActive = true;
+        isDialogueActive = true;
 
-		animator.Play("show");
+        animator.Play("show");
 
 		lines.Clear();
 
@@ -53,13 +58,14 @@ public class DialogueManager : MonoBehaviour
 
 	public void DisplayNextDialogueLine()
 	{
-		if (lines.Count == 0)
-		{
-			EndDialogue();
-			return;
-		}
+        if (isDialogueActive)
+            if (lines.Count == 0)
+			{
+				EndDialogue();
+				return;
+			}
 
-		DialogueLine currentLine = lines.Dequeue();
+        DialogueLine currentLine = lines.Dequeue();
 
 		characterIconKanan.sprite = currentLine.character.iconKanan;
         characterIconKiri.sprite = currentLine.character.iconKiri;
@@ -82,7 +88,7 @@ public class DialogueManager : MonoBehaviour
 
 	void EndDialogue()
 	{
-		isDialogueActive = false;
+        isDialogueActive = false;
 		animator.Play("hide");
-	}
+    }
 }

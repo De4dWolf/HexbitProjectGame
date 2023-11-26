@@ -37,7 +37,8 @@ public class PlayerController : MonoBehaviour
     {
         if (DialogueManager.Instance.isDialogueActive)
         {
-            moveX = 0;
+            rb.velocity = new Vector2(0,0);
+            isWalking = false;
             return;
         }
 
