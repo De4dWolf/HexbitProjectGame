@@ -905,8 +905,8 @@ GameObject:
   - component: {fileID: 37732944}
   - component: {fileID: 37732947}
   m_Layer: 3
-  m_Name: Square (2)
-  m_TagString: Ground
+  m_Name: OneWayPlatform2
+  m_TagString: OneWayPlatform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2518,7 +2518,7 @@ GameObject:
   - component: {fileID: 171047600}
   m_Layer: 3
   m_Name: Ground (6)
-  m_TagString: Untagged
+  m_TagString: OneWayPlatform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6111,7 +6111,7 @@ GameObject:
   - component: {fileID: 539655454}
   m_Layer: 3
   m_Name: OneWayPlatform
-  m_TagString: Ground
+  m_TagString: OneWayPlatform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -13583,7 +13583,7 @@ GameObject:
   - component: {fileID: 1211403175}
   m_Layer: 3
   m_Name: OneWayPlatform1
-  m_TagString: Ground
+  m_TagString: OneWayPlatform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
