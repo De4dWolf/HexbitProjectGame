@@ -21,7 +21,6 @@ public class EnemyShooting : MonoBehaviour
         Vector3 direction = player.transform.position - transform.position;
         float rot = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         float distance = Vector2.Distance(transform.position, player.transform.position);
-        Debug.Log(distance);
         //hadap
         if (rot <= 0 && rot >= -75)
         {
