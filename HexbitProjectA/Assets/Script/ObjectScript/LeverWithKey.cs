@@ -97,7 +97,7 @@ public class LeverWithKey : MonoBehaviour
                 {
                     SFX.Play();
                     StartCoroutine(OpenDoorGradually());
-                    transform.localRotation = quaternion.RotateY(160);
+                    //transform.localRotation = quaternion.RotateY(160);
                     // anim.SetTrigger("Buka");
                     GameManager.instance.camerachange(Camera2);
 
