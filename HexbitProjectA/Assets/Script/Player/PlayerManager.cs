@@ -7,10 +7,13 @@ public class PlayerManager : MonoBehaviour
 {
 
     [SerializeField] private float fallHeightThreshold = 10f;
-    [SerializeField] GameObject Blackbar;
-    private bool isFalling = false;
+    [SerializeField] GameObject gameOver;
 
-    private Vector3 RespawnPemain;
+    public string diedFrom;
+    public bool isDeath = false;
+    
+
+    public Vector3 RespawnPemain;
 
     [SerializeField] private UIManager _UIManager;
     [SerializeField] private int _redkey;
@@ -32,22 +35,15 @@ public class PlayerManager : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other)
     {
+
+        
+          
         if (other.gameObject.tag == "Void")
         {
-            Blackbar.SetActive(true);
-            Invoke("RespawnPlayerWithDelay", 0.7f);
-            Invoke("disableBlackbar", 2.0f);
+            Debug.Log(diedFrom);
+            diedFrom = LayerMask.LayerToName(other.gameObject.layer);
+            gameOver.SetActive(true);
         }
-    }
-
-    private void RespawnPlayerWithDelay()
-    {
-        transform.position = RespawnPemain;
-    }
-
-    private void disableBlackbar()
-    {
-        Blackbar.SetActive(false);
     }
 
 
@@ -56,7 +52,10 @@ public class PlayerManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       
+        if(isDeath)
+        {
+            transform.position = RespawnPemain;
+        }
     }
 
     /*void Die()
