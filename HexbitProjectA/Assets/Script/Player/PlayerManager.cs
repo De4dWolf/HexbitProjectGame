@@ -38,7 +38,7 @@ public class PlayerManager : MonoBehaviour
 
         
           
-        if (other.gameObject.tag == "Void")
+        if (other.gameObject.tag == "Void" || other.gameObject.tag == "Enemy")
         {
             Debug.Log(diedFrom);
             diedFrom = LayerMask.LayerToName(other.gameObject.layer);

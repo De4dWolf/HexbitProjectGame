@@ -25,6 +25,7 @@ public class PlayerController : MonoBehaviour
     private float verticalmove;
     private bool isOnLadder;
     private bool isClimbing;
+    [SerializeField] private float maxJatuh = -30;
 
     void Start()
     {
@@ -69,6 +70,14 @@ public class PlayerController : MonoBehaviour
         else
         {
              rb.gravityScale = 5f;
+        }
+
+        if(rb.velocity.y <= maxJatuh)
+        {
+            if (isGrounded)
+            {
+                Debug.Log("jatuh");
+            }
         }
     }
 

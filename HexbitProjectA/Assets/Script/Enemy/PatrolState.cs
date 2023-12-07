@@ -1,10 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using static UnityEditor.ShaderGraph.Internal.KeywordDependentCollection;
 
 public class PatrolState : MonoBehaviour
 {
     public Rigidbody2D rb;
+    //BoxCollider2D boxCollider2D;
     public Transform ledgeDetector;
     public LayerMask groundLayer, obstacleLayer;
 
@@ -14,19 +17,24 @@ public class PatrolState : MonoBehaviour
 
     void Start()
     {
-        
+        rb = GetComponent<Rigidbody2D>();
+        //boxCollider2D = GetComponent<BoxCollider2D>();
     }
 
     void Update()
     {
         RaycastHit2D hit = Physics2D.Raycast(ledgeDetector.position, Vector2.down, raycastDistance, groundLayer);
         RaycastHit2D hitObstacle = Physics2D.Raycast(ledgeDetector.position, Vector2.right, obstacleDistance, obstacleLayer);
-        Debug.DrawLine(ledgeDetector.position, hit.point, Color.red);
-        Debug.DrawLine(ledgeDetector.position, hitObstacle.point, Color.blue);
-        if (hit.collider == null || hitObstacle.collider == true)
+        RaycastHit2D hitObstacle2 = Physics2D.Raycast(ledgeDetector.position, Vector2.left, obstacleDistance, obstacleLayer);
+        Debug.DrawRay(ledgeDetector.position, Vector2.down * raycastDistance, Color.red);
+        Debug.DrawRay(ledgeDetector.position, Vector2.right * obstacleDistance, Color.blue);
+        Debug.DrawRay(ledgeDetector.position, Vector2.left * obstacleDistance, Color.yellow);
+
+        if (hit.collider == null || hitObstacle.collider == true || hitObstacle2.collider == true)
         {
             Rotate();
         }
+            
     }
 
     void FixedUpdate()
