@@ -12,7 +12,6 @@ public class LaverScript : MonoBehaviour
     public GameObject pintu;
     private Animator anim;
     public GameObject Camera2;
-
     public Door door;
 
     public AudioSource SFX;
@@ -56,8 +55,8 @@ public class LaverScript : MonoBehaviour
             SFX.Play();
             StartCoroutine(OpenDoorGradually());
             Debug.Log("player menyalakan laver");
-            transform.localRotation = quaternion.RotateY(160);
-           // anim.SetTrigger("Buka");
+            transform.localScale = new Vector3(-1f, 1f, 1f);
+            // anim.SetTrigger("Buka");
             GameManager.instance.camerachange(Camera2);
         }
     }
