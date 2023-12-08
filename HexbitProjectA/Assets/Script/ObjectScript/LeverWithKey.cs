@@ -20,6 +20,7 @@ public class LeverWithKey : MonoBehaviour
     private TextMeshProUGUI message;
     private Animator anim;
     public GameObject Camera2;
+    [SerializeField] private GameObject Particle;
 
     public Door door;
 
@@ -80,6 +81,7 @@ public class LeverWithKey : MonoBehaviour
                     SFX.Play();
                     StartCoroutine(OpenDoorGradually());
                     transform.localRotation = quaternion.RotateY(160);
+                    Particle.SetActive(true);
                     // anim.SetTrigger("Buka");
 
                     GameManager.instance.camerachange(Camera2);
@@ -89,7 +91,8 @@ public class LeverWithKey : MonoBehaviour
                 else
                 {
                     StartCoroutine(MessageFeedback(key + " is Required", 1.2f));
-                }
+                    
+                };
 
             }
             else {
