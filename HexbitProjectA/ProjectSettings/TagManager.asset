@@ -70,6 +70,9 @@ TagManager:
   - name: Pet
     uniqueID: 1419733649
     locked: 0
+  - name: Box
+    uniqueID: 1777084767
+    locked: 0
   - name: Grass
     uniqueID: 2988660173
     locked: 0

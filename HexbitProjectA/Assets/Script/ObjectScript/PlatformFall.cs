@@ -19,7 +19,7 @@ public class PlatformFall : MonoBehaviour
     void Update()
     {
         if (platformMovingBack)
-            transform.position = Vector2.MoveTowards(transform.position, initialPosition, 20f * Time.deltaTime);
+            transform.position = Vector2.MoveTowards(transform.position, initialPosition, 10f * Time.deltaTime);
 
         if (transform.position.y == initialPosition.y)
         {
@@ -42,7 +42,7 @@ public class PlatformFall : MonoBehaviour
         col.enabled = false;
         rb.isKinematic = false;
         //lama jatuh
-        Invoke("GetPlatformBack", 1.5f);
+        Invoke("GetPlatformBack", 2f);
     }
 
     void GetPlatformBack()

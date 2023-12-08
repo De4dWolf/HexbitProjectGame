@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour
     public float moveSpeed = 5f;
     public float jumpForce = 5f;
     public Transform groundCheck;
-    public LayerMask groundLayer, boxlayer;
+    public LayerMask groundLayer;
     private bool isGrounded;
     private float groundCheckRadius = 0.2f;
     private Rigidbody2D rb;
@@ -85,7 +85,7 @@ public class PlayerController : MonoBehaviour
     private void movement()
     {
         // Deteksi apakah karakter berada di atas tanah.
-        isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer, boxlayer);
+        isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
 
         // Mengontrol pergerakan karakter.
         moveX = Input.GetAxis("Horizontal");
