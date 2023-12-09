@@ -13,6 +13,16 @@ public class LevelLoader : MonoBehaviour
 
     public Animator transition;
 
+    public int sceneIndex;
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.tag == "Player")
+        {
+            LoadLevel(sceneIndex);
+        }
+    }
+
     public void LoadLevel (int sceneIndex)
     {
         StartCoroutine(LoadAsynchronusly(sceneIndex));

@@ -397,6 +397,7 @@ MonoBehaviour:
   progressText: {fileID: 859901317}
   transisi: {fileID: 733308946}
   transition: {fileID: 733308948}
+  sceneIndex: 1
 --- !u!4 &285070069
 Transform:
   m_ObjectHideFlags: 0

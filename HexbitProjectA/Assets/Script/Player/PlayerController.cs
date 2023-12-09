@@ -83,7 +83,6 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-
     private void movement()
     {
         // Deteksi apakah karakter berada di atas tanah.

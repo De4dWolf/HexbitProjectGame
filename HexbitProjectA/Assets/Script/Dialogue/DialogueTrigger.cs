@@ -25,13 +25,31 @@ public class Dialogue
 
 public class DialogueTrigger : MonoBehaviour
 {
+    public GameObject player;
+    public bool flip;
+
     public Dialogue dialogue;
     private bool playerInside = false;
 
     private void Update()
     {
-        if (playerInside && Input.GetKey(KeyCode.F))
+        if (playerInside && Input.GetKey(KeyCode.E))
+        {
             TriggerDialogue();
+
+            Vector3 scale = transform.localScale;
+
+            if(player.transform.position.x > transform.position.x)
+            {
+                scale.x = Mathf.Abs(scale.x) * -1 * (flip ? -1 : 1);
+            }
+            else
+            {
+                scale.x = Mathf.Abs(scale.x) * (flip ? -1 : 1);
+            }
+
+            transform.localScale = scale;
+        }
     }
 
     public void TriggerDialogue()

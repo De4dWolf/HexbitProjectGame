@@ -8,8 +8,15 @@ public class EnemyShooting : MonoBehaviour
     public GameObject bullet;
     public Transform bulletPos;
     private GameObject player;
+    public Animator anim;
+    public bool aim = false;
 
-    private float timer;
+    public float jarakMax = 15f;
+    public float rotasiAtas= -130;
+    public float rotasiBawah = -200;
+
+
+    //private float timer;
 
     void Start()
     {
@@ -22,22 +29,32 @@ public class EnemyShooting : MonoBehaviour
         float rot = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         float distance = Vector2.Distance(transform.position, player.transform.position);
         //hadap
-        if (rot <= 0 && rot >= -75)
+        if (rot <= rotasiAtas && rot >= rotasiBawah)
         {
             transform.rotation = Quaternion.Euler(0, 0, rot);
         }
 
-        //jarak max player untuk menembak
-        if(distance < 15 && rot <= 0 && rot >= -75)
-        {
-            timer += Time.deltaTime;
+        anim.SetBool("Aim", aim);
 
+        //jarak max player untuk menembak
+        if (distance < jarakMax && rot <= rotasiAtas && rot >= rotasiBawah)
+        {
+            aim = true;
+
+            /*
+            timer += Time.deltaTime;
+            
             //jeda menembak
             if (timer > 2)
             {
                 timer = 0;
                 shoot();
             }
+            */
+        }
+        else
+        {
+            aim = false;
         }
     }
 
