@@ -37,11 +37,11 @@ public class LeverWithKey : MonoBehaviour
     {
         if (IsNeedRedKey)
         {
-            key = "Red Key";
+            key = "Blue Fire";
         }
         else
         {
-            key = "Black Key";
+            key = "Red Fire";
         }
     }
     private void OnTriggerEnter2D(Collider2D other)
@@ -103,6 +103,7 @@ public class LeverWithKey : MonoBehaviour
                     //transform.localRotation = quaternion.RotateY(160);
                     // anim.SetTrigger("Buka");
                     GameManager.instance.camerachange(Camera2);
+                    Particle.SetActive(true);
 
                     doorOpen = true;
                     player.BlackKey -= 1;

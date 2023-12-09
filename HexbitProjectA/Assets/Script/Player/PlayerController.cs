@@ -27,6 +27,8 @@ public class PlayerController : MonoBehaviour
     private bool isClimbing;
     [SerializeField] private float maxJatuh = -30;
 
+    public ParticleSystem Dust;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -95,10 +97,12 @@ public class PlayerController : MonoBehaviour
             if (hadapKanan && moveX < 0)
             {
                 Flip();
+                CreateDust();
             }
             else if (!hadapKanan && moveX > 0)
             {
                 Flip();
+                CreateDust();
             }
             if (moveX == 0)
             {
@@ -115,6 +119,7 @@ public class PlayerController : MonoBehaviour
         if (isGrounded && Input.GetButtonDown("Jump") && !isGrab)
         {
             rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+            CreateDust();
         }
 
         if (Input.GetKeyDown(KeyCode.I))
@@ -210,5 +215,10 @@ public class PlayerController : MonoBehaviour
             isClimbing = false;
             Debug.Log("player keluar tangga");
         }
+    }
+
+    private void CreateDust()
+    {
+        Dust.Play();
     }
 }
