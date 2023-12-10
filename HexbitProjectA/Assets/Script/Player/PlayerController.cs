@@ -20,7 +20,7 @@ public class PlayerController : MonoBehaviour
     private bool isPull;
     private bool isPush;
 
-    private bool hadapKanan = true;
+    public bool hadapKanan = true;
 
     private float verticalmove;
     private bool isOnLadder;

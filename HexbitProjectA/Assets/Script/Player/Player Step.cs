@@ -11,27 +11,38 @@ public class PlayerStep : MonoBehaviour
 
     public AudioSource grass;
     public AudioSource rock;
-    public AudioSource Wood;
+    public AudioSource wood;
+
+    private void Awake()
+    {
+        grass = GameObject.Find("Footstep Grass").GetComponent<AudioSource>();
+        rock = GameObject.Find("Footstep Rock").GetComponent<AudioSource>();
+        wood = GameObject.Find("Footstep Wood").GetComponent<AudioSource>();
+    }
 
     private void FixedUpdate()
     {
         Debug.DrawRay(groundCheck.position, Vector2.down * groundCheckRadius, Color.red);
+
     }
 
     private void Step()
     {
         RaycastHit2D hit = Physics2D.Raycast(groundCheck.position, Vector2.down, groundCheckRadius, groundLayer);
-        if (hit.collider.tag == "Grass")
+        if (hit.collider != null && hit.collider.tag != null)
         {
-            grass.Play();
-        }
-        if (hit.collider.tag == "Rock")
-        {
-            rock.Play();
-        }
-        if (hit.collider.tag == "Wood")
-        {
-            Wood.Play();
+            if (hit.collider.CompareTag("Grass"))
+            {
+                grass.Play();
+            }
+            if (hit.collider.CompareTag("Rock"))
+            {
+                rock.Play();
+            }
+            if (hit.collider.CompareTag("Wood"))
+            {
+                wood.Play();
+            }
         }
     }
 }

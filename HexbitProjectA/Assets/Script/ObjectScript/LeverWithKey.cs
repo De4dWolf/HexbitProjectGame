@@ -84,7 +84,7 @@ public class LeverWithKey : MonoBehaviour
                     Particle.SetActive(true);
                     // anim.SetTrigger("Buka");
 
-                    GameManager.instance.camerachange(Camera2);
+                    GameManager.instance.CameraChange(Camera2);
                     player.RedKey -= 1;
                     doorOpen = true;
                 }
@@ -102,7 +102,7 @@ public class LeverWithKey : MonoBehaviour
                     StartCoroutine(OpenDoorGradually());
                     //transform.localRotation = quaternion.RotateY(160);
                     // anim.SetTrigger("Buka");
-                    GameManager.instance.camerachange(Camera2);
+                    GameManager.instance.CameraChange(Camera2);
                     Particle.SetActive(true);
 
                     doorOpen = true;

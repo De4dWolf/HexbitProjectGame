@@ -19,19 +19,19 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] private int _redkey;
     [SerializeField] private int _blackkey;
     public int coin;
+
+    void Awake()
+    {
+        gameOver = GameManager.ReturnDecendantOfParent(GameObject.Find("Game Over Canvas"), "Game Over");
+    }
+
     void Start()
     {
       RespawnPemain = transform.position;
     }
 
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.tag == "CheckPoint")
-        {
-            RespawnPemain = transform.position;
-        }
-    }
+
 
     private void OnCollisionEnter2D(Collision2D other)
     {
@@ -40,8 +40,9 @@ public class PlayerManager : MonoBehaviour
           
         if (other.gameObject.tag == "Void" || other.gameObject.tag == "Enemy")
         {
-            Debug.Log(diedFrom);
             diedFrom = LayerMask.LayerToName(other.gameObject.layer);
+            Debug.Log(diedFrom);
+
             gameOver.SetActive(true);
         }
     }

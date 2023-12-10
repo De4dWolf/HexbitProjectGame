@@ -16,8 +16,11 @@ public class GameOver : MonoBehaviour
     [SerializeField] private TextMeshProUGUI diedMessageText;
     [SerializeField] private GameObject audioManagerObject;
     [SerializeField] private AudioManager audioManager;
+    
     private AudioSource SFX;
     public AudioSource[] deathSFX;
+    public AudioSource SFX1;
+    public AudioSource SFX2;
 
     private bool audioPlayed = false;
 
@@ -25,17 +28,25 @@ public class GameOver : MonoBehaviour
     {
         playerObject = GameObject.FindWithTag("Player");
         player = playerObject.GetComponent<PlayerManager>();
-        diedMessageObject = GameObject.Find("DiedMessage");
-        diedMessageText = diedMessageObject.GetComponent<TextMeshProUGUI>();
+        blackBar = GameManager.ReturnDecendantOfParent(GameObject.Find("Main Camera"), "GameOverBackground");
+        diedMessageText = GameManager.ReturnDecendantOfParent(gameObject, "Died Message").GetComponent<TextMeshProUGUI>();
         audioManagerObject = GameObject.Find("SFX");
         audioManager = audioManagerObject.GetComponent<AudioManager>();
+
+        SFX1 = GameObject.Find("PlayerDied_Spike").GetComponent<AudioSource>();
+        SFX2 = GameObject.Find("PlayerDied_Drowned").GetComponent<AudioSource>();
+        deathSFX = new AudioSource[2];
+        deathSFX[0] = SFX1;
+        deathSFX[1] = SFX2;
+        SFX = SFX1;
 
     }
 
     private void Start()
     {
-        Debug.Log(player);
         movementcancel();
+
+
     }
 
 

@@ -19,7 +19,7 @@ public class GameManager : MonoBehaviour
     {
         
     }
-    public void camerachange(GameObject camera)
+    public void CameraChange(GameObject camera)
     {
         camerautama.SetActive(false);
         camera.SetActive(true);
@@ -30,6 +30,25 @@ public class GameManager : MonoBehaviour
             camerautama.SetActive(true);
             camera.SetActive(false);
         }
+    }
+
+    public static GameObject descendant = null;
+    public static GameObject ReturnDecendantOfParent(GameObject parent, string descendantName)
+    {
+
+        foreach (Transform child in parent.transform)
+        {
+            if (child.name == descendantName)
+            {
+                descendant = child.gameObject;
+                break;
+            }
+            else
+            {
+                ReturnDecendantOfParent(child.gameObject, descendantName);
+            }
+        }
+        return descendant;
     }
 
     // Update is called once per frame

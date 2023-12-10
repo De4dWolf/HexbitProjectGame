@@ -7,10 +7,11 @@ public class Checkpoint : MonoBehaviour
 {
     public int checkpointID;
     private bool playerinside;
+    private PlayerManager player;
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        
+        player = GameObject.Find("Player").GetComponent<PlayerManager>();
     }
 
     // Update is called once per frame
@@ -23,12 +24,21 @@ public class Checkpoint : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            save();
+            Save();
         }
     }
 
-    private void save()
+    private void Save()
     {
-        PlayerPrefs.SetInt("CurrentCheckpoint", checkpointID);
+        Debug.Log(PlayerPrefs.GetInt("CurrentCheckpoint") + "Prefs");
+        Debug.Log(checkpointID + "Checkpoint");
+
+        if (PlayerPrefs.GetInt("CurrentCheckpoint") <= checkpointID)
+        {
+            player.RespawnPemain = transform.position;
+            PlayerPrefs.SetInt("CurrentCheckpoint", checkpointID);
+        }
+
+
     }
 }

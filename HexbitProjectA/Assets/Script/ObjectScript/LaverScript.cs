@@ -57,7 +57,7 @@ public class LaverScript : MonoBehaviour
             Debug.Log("player menyalakan laver");
             transform.localScale = new Vector3(-1f, 1f, 1f);
             // anim.SetTrigger("Buka");
-            GameManager.instance.camerachange(Camera2);
+            GameManager.instance.CameraChange(Camera2);
         }
     }
 
