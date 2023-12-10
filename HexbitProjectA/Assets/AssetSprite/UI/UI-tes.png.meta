@@ -1033,6 +1033,111 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: continue
+      rect:
+        serializedVersion: 2
+        x: 376
+        y: 207
+        width: 127
+        height: 46
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4b4f487ec2d66664fac6cf9c9c4e14ad
+      internalID: 2027759186
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: continue1
+      rect:
+        serializedVersion: 2
+        x: 376
+        y: 159
+        width: 127
+        height: 46
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5607deb48979c0d459eba99fa6ef8060
+      internalID: -988653734
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: continue2
+      rect:
+        serializedVersion: 2
+        x: 376
+        y: 111
+        width: 127
+        height: 46
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1910d6f8404a9e3438e5d400aa831b06
+      internalID: -2067656476
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: continue3
+      rect:
+        serializedVersion: 2
+        x: 376
+        y: 63
+        width: 127
+        height: 46
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 67cb4c0380c2adb4f980f856453a45b8
+      internalID: -76244807
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: continue4
+      rect:
+        serializedVersion: 2
+        x: 376
+        y: 15
+        width: 127
+        height: 46
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b315469fe72fd4b49aa363c11d1c5fa8
+      internalID: 666754309
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -1044,6 +1149,11 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
+      continue: 2027759186
+      continue1: 2027759186
+      continue2: -988653734
+      continue3: -2067656476
+      continue4: -76244807
       credits: 1306838434
       credits1: 1306838434
       credits2: 1306838434

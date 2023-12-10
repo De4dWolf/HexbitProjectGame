@@ -40,7 +40,11 @@ public class EnemyBulletScript : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        if (other.gameObject.CompareTag("Ground") || other.gameObject.CompareTag("OneWayPlatform"))
+        if (other.gameObject.CompareTag("Ground")
+            || other.gameObject.CompareTag("OneWayPlatform")
+            || other.gameObject.CompareTag("Grass")
+            || other.gameObject.CompareTag("Wood")
+            || other.gameObject.CompareTag("Rock"))
         {
             rb.velocity = new Vector2(0, 0);
             col.enabled = false;

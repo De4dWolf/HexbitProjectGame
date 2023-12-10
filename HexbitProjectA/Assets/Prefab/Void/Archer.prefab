@@ -103,7 +103,7 @@ MonoBehaviour:
   bulletPos: {fileID: 3396857290031361926}
   anim: {fileID: 7507160277930017094}
   aim: 0
-  jarakMax: 15
+  jarakMax: 20
   rotasiAtas: -130
   rotasiBawah: -200
 --- !u!95 &7507160277930017094
@@ -202,9 +202,9 @@ SpriteRenderer:
   m_SortingLayerID: -94885517
   m_SortingLayer: 9
   m_SortingOrder: 0
-  m_Sprite: {fileID: 944826593155893953, guid: 9c763e494680be0459ca5322c9bd423b, type: 3}
+  m_Sprite: {fileID: -8338589176112665663, guid: 9c763e494680be0459ca5322c9bd423b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 1
+  m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 1, y: 1}

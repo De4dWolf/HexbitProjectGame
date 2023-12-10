@@ -15,6 +15,9 @@ TagManager:
   - OneWayPlatform
   - PickupTarget
   - Enemy
+  - Grass
+  - Rock
+  - Wood
   layers:
   - Default
   - TransparentFX

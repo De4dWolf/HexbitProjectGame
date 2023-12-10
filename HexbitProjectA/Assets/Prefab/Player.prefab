@@ -115,7 +115,7 @@ Transform:
   m_GameObject: {fileID: 2312645512028333603}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -1.502, z: 0}
+  m_LocalPosition: {x: 0, y: -1.465, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4967,6 +4967,7 @@ GameObject:
   - component: {fileID: 7313774529736624686}
   - component: {fileID: 8141912340924353045}
   - component: {fileID: 8157169943107548138}
+  - component: {fileID: 2803988941411699204}
   m_Layer: 9
   m_Name: Player
   m_TagString: Player
@@ -5240,6 +5241,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerCollider: {fileID: 766662111595746992}
+--- !u!114 &2803988941411699204
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3586798668572932815}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 673cdd157823c0c4297d435d9dd2f518, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  groundCheck: {fileID: 5371370860149505934}
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 8
+  grass: {fileID: 0}
+  rock: {fileID: 0}
+  Wood: {fileID: 0}
 --- !u!1 &5564116285447076211
 GameObject:
   m_ObjectHideFlags: 0
