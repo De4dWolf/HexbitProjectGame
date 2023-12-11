@@ -7,7 +7,8 @@ public class PlayerManager : MonoBehaviour
 {
 
     [SerializeField] private float fallHeightThreshold = 10f;
-    [SerializeField] GameObject gameOver;
+    [SerializeField] private GameObject gameOver;
+    [SerializeField] private PlayerController playerController;
 
     public string diedFrom;
     public bool isDeath = false;
@@ -23,11 +24,13 @@ public class PlayerManager : MonoBehaviour
     void Awake()
     {
         gameOver = GameManager.ReturnDecendantOfParent(GameObject.Find("Game Over Canvas"), "Game Over");
+        playerController = GetComponent<PlayerController>();
     }
 
     void Start()
     {
-      RespawnPemain = transform.position;
+        PlayerPrefs.SetInt("CurrentCheckpoint", 0);
+        RespawnPemain = transform.position;
     }
 
 
@@ -53,8 +56,14 @@ public class PlayerManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(isDeath)
+
+        if (isDeath)
         {
+            if (Mathf.Round(transform.eulerAngles.y) == 180)
+            {
+                playerController.Flip();
+            }
+
             transform.position = RespawnPemain;
         }
     }

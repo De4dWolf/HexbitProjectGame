@@ -127,7 +127,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void Flip()
+    public void Flip()
     {
         hadapKanan = !hadapKanan;
         transform.Rotate(0.0f, 180.0f, 0.0f);
