@@ -7,6 +7,9 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
     public GameObject camerautama;
+    public bool saving = false;
+    public bool reset = false;
+    public bool trigger = false;
 
     private void Awake()
     {
@@ -50,6 +53,31 @@ public class GameManager : MonoBehaviour
         }
         return descendant;
     }
+
+    public void SaveState()
+    {
+        StartCoroutine(Save());
+        
+        IEnumerator Save()
+        {
+            saving = true;
+            yield return null;
+            saving = false;
+        }
+    }
+
+    public void ResetState()
+    {
+        StartCoroutine(Reset());
+
+        IEnumerator Reset()
+        {
+            reset = true;
+            yield return null;
+            reset = false;
+        }
+    }
+
 
     // Update is called once per frame
     void Update()

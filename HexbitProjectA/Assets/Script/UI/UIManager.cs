@@ -6,24 +6,26 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
-    [SerializeField] private TextMeshProUGUI redKeyText;
-    [SerializeField] private TextMeshProUGUI blackKeyText;
+    [SerializeField] private TextMeshProUGUI redFireText;
+    [SerializeField] private TextMeshProUGUI blueFireText;
     [SerializeField] private TextMeshProUGUI coinText;
     public static UIManager Instance;
 
     private void Awake()
     {
+        redFireText = GameObject.Find("Red Fire Text").GetComponent<TextMeshProUGUI>();
+        blueFireText = GameObject.Find("Blue Fire Text").GetComponent<TextMeshProUGUI>();
         Instance = this;
     }
 
-    public void UpdateKey(float value, string key)
+    public void UpdateFire(float value, string key)
     {
         if (key == "red")
         {
-            redKeyText.text = "x " + value.ToString();
-        } else if (key == "black")
+            redFireText.text = "x " + value.ToString();
+        } else if (key == "blue")
         {
-            blackKeyText.text = "x " + value.ToString();
+            blueFireText.text = "x " + value.ToString();
         }
     }
 

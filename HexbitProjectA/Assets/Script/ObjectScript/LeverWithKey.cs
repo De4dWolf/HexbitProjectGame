@@ -10,8 +10,11 @@ public class LeverWithKey : MonoBehaviour
 {
     private bool playerInside = false;
     private bool doorOpen = false;
-    public bool IsNeedRedKey;
+    public bool IsNeedRedFire;
     private string key;
+    private bool fireConsumed = false;
+    private int saveAtWhichCheckpoint = -2; // the default value is -2 because -1 is the default value of PlayerPrefs Checkpoint and 0 is the lowest value of cheekpoint
+
 
     protected GameObject playerObject;
     protected PlayerManager player;
@@ -35,13 +38,13 @@ public class LeverWithKey : MonoBehaviour
 
     void Start()
     {
-        if (IsNeedRedKey)
+        if (IsNeedRedFire)
         {
-            key = "Blue Fire";
+            key = "Red Fire";
         }
         else
         {
-            key = "Red Fire";
+            key = "Blue Fire";
         }
     }
     private void OnTriggerEnter2D(Collider2D other)
@@ -62,7 +65,6 @@ public class LeverWithKey : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             playerInside = false;
-            Debug.Log("Player exited laver");
             UIText.SetActive(false);
         }
     }
@@ -71,21 +73,34 @@ public class LeverWithKey : MonoBehaviour
 
     void Update()
     {
+
+        if (GameManager.instance.saving)
+        {
+            saveAtWhichCheckpoint = PlayerPrefs.GetInt("CurrentCheckpoint");
+        }
+
+        if( GameManager.instance.reset && fireConsumed)
+        { 
+            fireConsumed = false;
+            RevertChanges();
+        }
+
+
         if (playerInside && !doorOpen && Input.GetKeyDown(KeyCode.E))
         {
 
-            if (IsNeedRedKey)
+            if (IsNeedRedFire)
             {
-                if (player.RedKey > 0)
+                if (player.RedFire > 0)
                 {
                     SFX.Play();
                     StartCoroutine(OpenDoorGradually());
                     transform.localRotation = quaternion.RotateY(160);
                     Particle.SetActive(true);
                     // anim.SetTrigger("Buka");
-
+                    fireConsumed = true;
                     GameManager.instance.CameraChange(Camera2);
-                    player.RedKey -= 1;
+                    player.RedFire -= 1;
                     doorOpen = true;
                 }
                 else
@@ -96,17 +111,17 @@ public class LeverWithKey : MonoBehaviour
 
             }
             else {
-                if (player.BlackKey > 0)
+                if (player.BlueFire > 0)
                 {
                     SFX.Play();
                     StartCoroutine(OpenDoorGradually());
-                    //transform.localRotation = quaternion.RotateY(160);
                     // anim.SetTrigger("Buka");
+                    fireConsumed = true;
                     GameManager.instance.CameraChange(Camera2);
                     Particle.SetActive(true);
 
                     doorOpen = true;
-                    player.BlackKey -= 1;
+                    player.BlueFire -= 1;
                 }
                 else
                 {
@@ -115,11 +130,12 @@ public class LeverWithKey : MonoBehaviour
             }
         }
 
+        
         IEnumerator OpenDoorGradually()
         {
             if (door != null)
             {
-                door.dooropen();
+                door.DoorOpen();
             }
 
             yield return new WaitForSeconds(1.0f); // Adjust the time it takes to fully open the door
@@ -130,6 +146,24 @@ public class LeverWithKey : MonoBehaviour
             message.text = newText;
             yield return new WaitForSeconds(delayTime);
             message.text = "Press E";
+        }
+    }
+
+    private void RevertChanges()
+    {
+        Debug.Log("Execute");
+        if (saveAtWhichCheckpoint != PlayerPrefs.GetInt("CurrentCheckpoint"))
+        {
+            Particle.SetActive(false);
+            doorOpen = false;
+
+            if (IsNeedRedFire)
+            {
+                player.RedFire += 1;
+            } else
+            {
+                player.BlueFire += 1;
+            }
         }
     }
 }

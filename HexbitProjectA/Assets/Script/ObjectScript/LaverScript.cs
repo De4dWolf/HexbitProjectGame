@@ -20,8 +20,8 @@ public class LaverScript : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+
             playerInside = true;
-            Debug.Log("player melewati laver");
             UIText.SetActive(true);
             
         }
@@ -32,8 +32,8 @@ public class LaverScript : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             playerInside = false;
-            Debug.Log("Player exited laver");
             UIText.SetActive(false);
+
         }
     }
 
@@ -65,7 +65,7 @@ public class LaverScript : MonoBehaviour
     {
         if (door != null)
         {
-            door.dooropen();
+            door.DoorOpen();
         }
 
         yield return new WaitForSeconds(1.0f); // Adjust the time it takes to fully open the door

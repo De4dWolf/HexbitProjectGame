@@ -17,8 +17,8 @@ public class PlayerManager : MonoBehaviour
     public Vector3 RespawnPemain;
 
     [SerializeField] private UIManager _UIManager;
-    [SerializeField] private int _redkey;
-    [SerializeField] private int _blackkey;
+    [SerializeField] private int _redfire;
+    [SerializeField] private int _bluefire;
     public int coin;
 
     void Awake()
@@ -29,7 +29,7 @@ public class PlayerManager : MonoBehaviour
 
     void Start()
     {
-        PlayerPrefs.SetInt("CurrentCheckpoint", 0);
+        PlayerPrefs.SetInt("CurrentCheckpoint", -1);
         RespawnPemain = transform.position;
     }
 
@@ -44,8 +44,6 @@ public class PlayerManager : MonoBehaviour
         if (other.gameObject.tag == "Void" || other.gameObject.tag == "Enemy")
         {
             diedFrom = LayerMask.LayerToName(other.gameObject.layer);
-            Debug.Log(diedFrom);
-
             gameOver.SetActive(true);
         }
     }
@@ -57,14 +55,21 @@ public class PlayerManager : MonoBehaviour
     void Update()
     {
 
+        if (GameManager.instance.reset)
+        {
+            Debug.Log("ONLY ONE");
+
+        }
         if (isDeath)
         {
             if (Mathf.Round(transform.eulerAngles.y) == 180)
             {
                 playerController.Flip();
             }
-
             transform.position = RespawnPemain;
+            isDeath = false;
+            GameManager.instance.ResetState();
+
         }
     }
 
@@ -74,28 +79,28 @@ public class PlayerManager : MonoBehaviour
         Debug.Log("anda mati");
     }*/
 
-    public int RedKey { 
+    public int RedFire { 
         get 
         { 
-            return _redkey; 
+            return _redfire; 
         } 
         set 
         {
-            _redkey = value;
-            UIManager.Instance.UpdateKey(_redkey, "red");
+            _redfire = value;
+            UIManager.Instance.UpdateFire(_redfire, "red");
         }
     }
 
-    public int BlackKey
+    public int BlueFire
     {
         get
         {
-            return _blackkey;
+            return _bluefire;
         }
         set
         {
-            _blackkey = value;
-            UIManager.Instance.UpdateKey(_blackkey, "black");
+            _bluefire = value;
+            UIManager.Instance.UpdateFire(_bluefire, "blue");
         }
     }
 

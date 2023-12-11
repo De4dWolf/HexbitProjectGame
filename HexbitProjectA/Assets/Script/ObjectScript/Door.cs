@@ -8,6 +8,8 @@ public class Door : MonoBehaviour
     public Transform openposition;
     public float moveSpeed = 2.0f;
     private Vector3 initialPosition;
+    private Vector3 newPosition;
+    private int saveAtWhichCheckpoint = -2; // the default value is -2 because -1 is the default value of PlayerPrefs Checkpoint and 0 is the lowest value of cheekpoint
     private float startTime;
     private bool isMoving = false;
 
@@ -16,11 +18,10 @@ public class Door : MonoBehaviour
         if (openposition != null)
         {
             initialPosition = transform.position;
-            
         }
     }
 
-    public void dooropen()
+    public void DoorOpen()
     {
         if (openposition != null && !isMoving)
         {
@@ -31,6 +32,25 @@ public class Door : MonoBehaviour
 
     void Update()
     {
+
+        if (GameManager.instance.saving)
+        {
+            saveAtWhichCheckpoint = PlayerPrefs.GetInt("CurrentCheckpoint");
+            newPosition = transform.position;
+        }  
+        
+        if (GameManager.instance.reset)
+        {
+            if (newPosition == new Vector3(0, 0, 0))
+            {
+                transform.position = initialPosition;
+            }
+            else
+            {
+                transform.position = newPosition;
+            }
+        }
+
         if (isMoving)
         {
             float journeyLength = Vector3.Distance(initialPosition, openposition.position);
@@ -41,8 +61,14 @@ public class Door : MonoBehaviour
             if (fractionOfJourney >= 1.0f)
             {
                 // The door has reached its open position
+                if(saveAtWhichCheckpoint == PlayerPrefs.GetInt("CurrentCheckpoint"))
+                {
+                    newPosition = transform.position;
+
+                }
                 isMoving = false;
             }
         }
+
     }
 }

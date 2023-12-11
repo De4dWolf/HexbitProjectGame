@@ -78,7 +78,6 @@ public class PlayerController : MonoBehaviour
         {
             if (isGrounded)
             {
-                Debug.Log("jatuh");
             }
         }
     }
@@ -202,7 +201,6 @@ public class PlayerController : MonoBehaviour
         if (collision.CompareTag("Tangga"))
         {
             isOnLadder = true;
-            Debug.Log("player berada di tangga");
         }
     }
 
@@ -212,7 +210,6 @@ public class PlayerController : MonoBehaviour
         {
             isOnLadder = false;
             isClimbing = false;
-            Debug.Log("player keluar tangga");
         }
     }
 
