@@ -55,11 +55,6 @@ public class PlayerManager : MonoBehaviour
     void Update()
     {
 
-        if (GameManager.instance.reset)
-        {
-            Debug.Log("ONLY ONE");
-
-        }
         if (isDeath)
         {
             if (Mathf.Round(transform.eulerAngles.y) == 180)

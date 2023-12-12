@@ -33,12 +33,11 @@ public class GameOver : MonoBehaviour
         audioManagerObject = GameObject.Find("SFX");
         audioManager = audioManagerObject.GetComponent<AudioManager>();
 
-        SFX1 = GameObject.Find("PlayerDied_Spike").GetComponent<AudioSource>();
-        SFX2 = GameObject.Find("PlayerDied_Drowned").GetComponent<AudioSource>();
-        deathSFX = new AudioSource[2];
-        deathSFX[0] = SFX1;
-        deathSFX[1] = SFX2;
-        SFX = SFX1;
+        //SFX1 = GameObject.Find("PlayerDied_Spike").GetComponent<AudioSource>();
+        //SFX2 = GameObject.Find("PlayerDied_Drowned").GetComponent<AudioSource>();
+        //deathSFX = new AudioSource[2];
+        //deathSFX[0] = SFX1;
+        //deathSFX[1] = SFX2;
 
     }
 
@@ -58,7 +57,7 @@ public class GameOver : MonoBehaviour
         {
             // Add death audio here 
             audioManager.backroundAudio.Stop();
-            SFX.Play();
+            //SFX.Play();
             audioPlayed = true;
         }
 
@@ -69,10 +68,10 @@ public class GameOver : MonoBehaviour
 
         if (player.diedFrom == "Spike"){
             diedMessageText.text = "you've been pierced";
-            SFX = deathSFX[0];
+            //SFX = deathSFX[0];
         } else if (player.diedFrom == "Air")
         {
-            SFX = deathSFX[1];
+            //SFX = deathSFX[1];
             diedMessageText.text = "you've been drowned";
         }
 

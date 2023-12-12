@@ -93105,6 +93105,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   camerautama: {fileID: 2134271357}
+  saving: 0
+  reset: 0
+  trigger: 0
 --- !u!4 &214609407
 Transform:
   m_ObjectHideFlags: 0
@@ -93277,7 +93280,7 @@ GameObject:
   - component: {fileID: 222607614}
   - component: {fileID: 222607613}
   m_Layer: 5
-  m_Name: Red Key Image
+  m_Name: Blue Fire Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -100927,7 +100930,7 @@ GameObject:
   - component: {fileID: 510318140}
   - component: {fileID: 510318139}
   m_Layer: 5
-  m_Name: Black Key Text
+  m_Name: Red Fire Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -101229,7 +101232,7 @@ GameObject:
   - component: {fileID: 515763991}
   - component: {fileID: 515763990}
   m_Layer: 5
-  m_Name: Black Key Image
+  m_Name: Red Fire Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -107835,7 +107838,7 @@ GameObject:
   - component: {fileID: 1283825938}
   - component: {fileID: 1283825937}
   m_Layer: 5
-  m_Name: Red KeyText
+  m_Name: Blue Fire Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -112712,7 +112715,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74a68c081ee67c542b37c9af61fab9d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IsNeedRedKey: 1
+  IsNeedRedFire: 0
   UIText: {fileID: 1973219316}
   Camera2: {fileID: 842802268}
   Particle: {fileID: 330268555}
@@ -119750,8 +119753,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b611c27d84a9a80488d5db4faa88a894, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  redKeyText: {fileID: 1283825937}
-  blackKeyText: {fileID: 510318139}
+  redFireText: {fileID: 0}
+  blueFireText: {fileID: 0}
   coinText: {fileID: 1709632359}
 --- !u!4 &2037765743
 Transform:
@@ -120315,7 +120318,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74a68c081ee67c542b37c9af61fab9d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IsNeedRedKey: 1
+  IsNeedRedFire: 0
   UIText: {fileID: 1219834992}
   Camera2: {fileID: 717061344}
   Particle: {fileID: 1930055141}
@@ -121637,7 +121640,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2136057878}
   m_Layer: 5
-  m_Name: Keys UI
+  m_Name: Fires UI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
