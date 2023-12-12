@@ -25,7 +25,6 @@ public class PlayerController : MonoBehaviour
     private float verticalmove;
     private bool isOnLadder;
     private bool isClimbing;
-    [SerializeField] private float maxJatuh = -30;
 
     public ParticleSystem Dust;
 
@@ -73,13 +72,7 @@ public class PlayerController : MonoBehaviour
         {
              rb.gravityScale = 5f;
         }
-
-        if(rb.velocity.y <= maxJatuh)
-        {
-            if (isGrounded)
-            {
-            }
-        }
+            
     }
 
     private void movement()

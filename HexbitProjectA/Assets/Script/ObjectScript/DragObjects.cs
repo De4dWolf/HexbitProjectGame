@@ -6,6 +6,7 @@ public class DragObjects : MonoBehaviour
 {
     public Transform boxHolder;
     private Rigidbody2D rb;
+    public AudioSource dragObject;
 
     void Start()
     {

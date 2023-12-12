@@ -1423,7 +1423,7 @@ Transform:
   m_GameObject: {fileID: 116477173}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 86.94, y: 12.7699995, z: -10}
+  m_LocalPosition: {x: -72.58, y: 2.9, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -67896,6 +67896,10 @@ PrefabInstance:
       propertyPath: _UIManager
       value: 
       objectReference: {fileID: 1788078031}
+    - target: {fileID: 2054768038087551168, guid: 30398647a979b65468aeb862757e2297, type: 3}
+      propertyPath: dragObject
+      value: 
+      objectReference: {fileID: 642126852}
     - target: {fileID: 2803988941411699204, guid: 30398647a979b65468aeb862757e2297, type: 3}
       propertyPath: Box
       value: 
