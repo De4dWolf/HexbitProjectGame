@@ -6486,6 +6486,10 @@ PrefabInstance:
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: UpdateSound
       objectReference: {fileID: 0}
+    - target: {fileID: 4676577820881167890, guid: d5aa80f388ea48848a02c82403f4070d, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4729355788854728177, guid: d5aa80f388ea48848a02c82403f4070d, type: 3}
       propertyPath: m_Name
       value: Options Menu
@@ -7359,7 +7363,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1420292498}
   - component: {fileID: 1420292497}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: plant-house
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7406,7 +7410,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -16
   m_Sprite: {fileID: 21300000, guid: ac6ecc20ae9b77b4ba48354ab8f54ee9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -8195,7 +8199,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 6c51f634df959a64da8d5e689fe7fa13, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 2cf45f5226dfe9645b9f1b325154e27d, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1

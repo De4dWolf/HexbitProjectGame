@@ -5,11 +5,16 @@ using UnityEngine;
 public class TutorScript : MonoBehaviour
 {
     public GameObject TutorialImage;
+    public AudioSource audioSource;
     private void OnTriggerEnter2D(Collider2D other)
     {
+        
+
         if (other.CompareTag("Player"))
         {
             TutorialImage.SetActive(true);
+            audioSource.Play();
+           
         }
 
     }
@@ -18,6 +23,7 @@ public class TutorScript : MonoBehaviour
 
     void Start()
     {
+     
         
     }
 

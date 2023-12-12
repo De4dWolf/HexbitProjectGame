@@ -10,18 +10,24 @@ public class GamePause : MonoBehaviour
     [SerializeField] GameObject optionsMenu;
     [SerializeField] GameObject concedeMenu;
     [SerializeField] GameObject Player;
-    
+
+    public AudioSource audiopause;
+    public AudioSource audioresume;
+
     public static bool isPaused = false;
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
+          
             movementcancel();
             if (!isPaused)
             {
+                audiopause.Play();
                 Pause();
             } else
             {
+                audioresume.Play();
                 Resume();
                 concedeMenu.SetActive(false);
                 optionsMenu.SetActive(false);

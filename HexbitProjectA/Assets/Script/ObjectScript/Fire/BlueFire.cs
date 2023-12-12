@@ -9,6 +9,7 @@ public class BlueFire : Fire
     private float checkpointTimeRecord = 0;
     private float timeSpentTillPicked;
     private float PickedTimeRecord = 0;
+    public AudioSource audiokey;
     protected void LateUpdate()
     {
         timeSpentTillCheckpoint += Time.time;
@@ -33,6 +34,7 @@ public class BlueFire : Fire
             PickedTimeRecord = timeSpentTillPicked;
             IsCollected = true;
             player.BlueFire += 1;
+            audiokey.Play();
             /*GetComponent<Animator>().SetTrigger("Picked");*/ // Destroy animation 
         }
     }
