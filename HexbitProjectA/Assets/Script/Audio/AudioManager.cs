@@ -14,6 +14,13 @@ public class AudioManager : MonoBehaviour
     public AudioSource backroundAudio;
     public AudioSource[] soundEffectsAudio;
 
+    public static AudioManager instance;
+
+    private void Awake()
+    {
+        instance = this;
+    }
+
     void Start()
     {
         firstPlayInt = PlayerPrefs.GetInt(FirstPlay);

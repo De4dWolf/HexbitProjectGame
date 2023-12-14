@@ -14,8 +14,6 @@ public class GameOver : MonoBehaviour
     [SerializeField] private PlayerManager player;
     [SerializeField] private GameObject diedMessageObject;
     [SerializeField] private TextMeshProUGUI diedMessageText;
-    [SerializeField] private GameObject audioManagerObject;
-    [SerializeField] private AudioManager audioManager;
     
     private AudioSource SFX;
     public AudioSource[] deathSFX;
@@ -30,8 +28,6 @@ public class GameOver : MonoBehaviour
         player = playerObject.GetComponent<PlayerManager>();
         blackBar = GameManager.ReturnDecendantOfParent(GameObject.Find("Main Camera"), "GameOverBackground");
         diedMessageText = GameManager.ReturnDecendantOfParent(gameObject, "Died Message").GetComponent<TextMeshProUGUI>();
-        audioManagerObject = GameObject.Find("SFX");
-        audioManager = audioManagerObject.GetComponent<AudioManager>();
 
         //SFX1 = GameObject.Find("PlayerDied_Spike").GetComponent<AudioSource>();
         //SFX2 = GameObject.Find("PlayerDied_Drowned").GetComponent<AudioSource>();
@@ -51,32 +47,17 @@ public class GameOver : MonoBehaviour
 
     private void Update()
     {
-        deathSentence();
 
         if (!audioPlayed)
         {
             // Add death audio here 
-            audioManager.backroundAudio.Stop();
+            AudioManager.instance.backroundAudio.Stop();
             //SFX.Play();
             audioPlayed = true;
         }
 
     }
 
-    void deathSentence()
-    {
-
-        if (player.diedFrom == "Spike"){
-            diedMessageText.text = "you've been pierced";
-            //SFX = deathSFX[0];
-        } else if (player.diedFrom == "Air")
-        {
-            //SFX = deathSFX[1];
-            diedMessageText.text = "you've been drowned";
-        }
-
-        
-    }
 
 
     void movementcancel()
@@ -109,7 +90,7 @@ public class GameOver : MonoBehaviour
 
     private void DestroyGameOver()
     {
-        audioManager.backroundAudio.Play();
+        AudioManager.instance.backroundAudio.Play();
         player.isDeath = false;
         audioPlayed = false;
         gameObject.SetActive(false);
