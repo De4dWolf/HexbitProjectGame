@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -19,6 +20,7 @@ public class PlayerController : MonoBehaviour
     private bool isGrab;
     private bool isPull;
     private bool isPush;
+    private bool isClimb;
 
     public bool hadapKanan = true;
 
@@ -50,6 +52,7 @@ public class PlayerController : MonoBehaviour
         if (isOnLadder && Mathf.Abs(verticalmove) > 0f)
         {
             isClimbing = true;
+            
         }
     }
 
@@ -62,11 +65,13 @@ public class PlayerController : MonoBehaviour
         anim.SetBool("isGrab", isGrab);
         anim.SetBool("isPull", isPull);
         anim.SetBool("isPush", isPush);
+        anim.SetBool("isClimb", isClimb);
 
         if (isClimbing)
         {
             rb.gravityScale = 0f;
             rb.velocity = new Vector2(rb.velocity.x, verticalmove * 4);
+            
         }
         else
         {
@@ -194,6 +199,8 @@ public class PlayerController : MonoBehaviour
         if (collision.CompareTag("Tangga"))
         {
             isOnLadder = true;
+            isClimb = true;
+
         }
     }
 
@@ -203,6 +210,7 @@ public class PlayerController : MonoBehaviour
         {
             isOnLadder = false;
             isClimbing = false;
+            isClimb = false;
         }
     }
 
