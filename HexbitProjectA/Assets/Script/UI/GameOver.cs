@@ -14,11 +14,6 @@ public class GameOver : MonoBehaviour
     [SerializeField] private PlayerManager player;
     [SerializeField] private GameObject diedMessageObject;
     [SerializeField] private TextMeshProUGUI diedMessageText;
-    
-    private AudioSource SFX;
-    public AudioSource[] deathSFX;
-    public AudioSource SFX1;
-    public AudioSource SFX2;
 
     private bool audioPlayed = false;
 
@@ -28,31 +23,25 @@ public class GameOver : MonoBehaviour
         player = playerObject.GetComponent<PlayerManager>();
         blackBar = GameManager.ReturnDecendantOfParent(GameObject.Find("Main Camera"), "GameOverBackground");
         diedMessageText = GameManager.ReturnDecendantOfParent(gameObject, "Died Message").GetComponent<TextMeshProUGUI>();
-
-        //SFX1 = GameObject.Find("PlayerDied_Spike").GetComponent<AudioSource>();
-        //SFX2 = GameObject.Find("PlayerDied_Drowned").GetComponent<AudioSource>();
-        //deathSFX = new AudioSource[2];
-        //deathSFX[0] = SFX1;
-        //deathSFX[1] = SFX2;
-
     }
 
     private void Start()
     {
-        movementcancel();
-
-
     }
 
 
     private void Update()
     {
+        if (player.isDeath)
+        {
+            movementcancel();
+
+        }
 
         if (!audioPlayed)
         {
             // Add death audio here 
             AudioManager.instance.backroundAudio.Stop();
-            //SFX.Play();
             audioPlayed = true;
         }
 
@@ -62,6 +51,7 @@ public class GameOver : MonoBehaviour
 
     void movementcancel()
     {
+        playerObject.GetComponent<SpriteRenderer>().enabled = false;
         PlayerController Scripttodisable = playerObject.GetComponent<PlayerController>();
         Scripttodisable.enabled = false;
     }
@@ -74,7 +64,6 @@ public class GameOver : MonoBehaviour
 
     public void TryAgain()
     {
-        player.isDeath = true;
         blackBar.SetActive(true);
         Invoke("DestroyGameOver", 0.7f);
         Invoke("DestroyBlackBar", 1.115f);
@@ -91,7 +80,7 @@ public class GameOver : MonoBehaviour
     private void DestroyGameOver()
     {
         AudioManager.instance.backroundAudio.Play();
-        player.isDeath = false;
+        player.isRespawn = true;
         audioPlayed = false;
         gameObject.SetActive(false);
 
@@ -99,15 +88,12 @@ public class GameOver : MonoBehaviour
 
     private void DestroyBlackBar()
     {
+        playerObject.GetComponent<SpriteRenderer>().enabled = true;
+        player.isRespawn = false;
+        player.isDeath = false;
         blackBar.SetActive(false);
         movementenable();
 
 
     }
-
-    // Death Sound Credits
-
-    // Spike = https://freesound.org/people/SilverIllusionist/sounds/472689/ 
-    // Drowned = https://www.youtube.com/watch?v=NvdEVysHzgA
-
 }

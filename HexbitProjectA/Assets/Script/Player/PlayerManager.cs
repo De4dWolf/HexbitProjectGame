@@ -11,8 +11,8 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] private PlayerController playerController;
 
     public string diedFrom;
+    public bool isRespawn = false;
     public bool isDeath = false;
-    
 
     public Vector3 RespawnPemain;
 
@@ -44,6 +44,7 @@ public class PlayerManager : MonoBehaviour
         if (other.gameObject.tag == "Void" || other.gameObject.tag == "Enemy")
         {
             diedFrom = LayerMask.LayerToName(other.gameObject.layer);
+            isDeath = true;
             gameOver.SetActive(true);
         }
     }
@@ -55,14 +56,14 @@ public class PlayerManager : MonoBehaviour
     void Update()
     {
 
-        if (isDeath)
+        if (isRespawn)
         {
             if (Mathf.Round(transform.eulerAngles.y) == 180)
             {
                 playerController.Flip();
             }
             transform.position = RespawnPemain;
-            isDeath = false;
+            isRespawn = false;
             GameManager.instance.ResetState();
 
         }

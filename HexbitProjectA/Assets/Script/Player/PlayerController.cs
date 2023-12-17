@@ -34,6 +34,7 @@ public class PlayerController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
+
     }
 
 
@@ -65,7 +66,7 @@ public class PlayerController : MonoBehaviour
         anim.SetBool("isGrab", isGrab);
         anim.SetBool("isPull", isPull);
         anim.SetBool("isPush", isPush);
-        anim.SetBool("isClimb", isClimb);
+        anim.SetBool("isClimb", isClimbing);
 
         if (isClimbing)
         {
