@@ -8,9 +8,16 @@ public class FallingSpike : MonoBehaviour
     BoxCollider2D boxCollider2D;
     public float distance;
     bool isFalling = false;
+    Vector3 initialPosition;
+    private int saveAtWhichCheckpoint = -2; // the default value is -2 because -1 is the default value of PlayerPrefs Checkpoint and 0 is the lowest value of cheekpoint
+    private float timeSpentTillCheckpoint;
+    private float checkpointTimeRecord = 0;
+    private float timeSpentTillPicked;
+    private float PickedTimeRecord = 0;
 
     private void Start()
     {
+        initialPosition = transform.position;
         rb = GetComponent<Rigidbody2D>();
         boxCollider2D = GetComponent<BoxCollider2D>();
     }
@@ -33,6 +40,34 @@ public class FallingSpike : MonoBehaviour
                 }
             }
         }
+    }
+
+    private void LateUpdate()
+    {
+        timeSpentTillCheckpoint += Time.time;
+        timeSpentTillPicked += Time.time;
+
+        if (GameManager.instance.saving)
+        {
+            saveAtWhichCheckpoint = PlayerPrefs.GetInt("CurrentCheckpoint");
+            checkpointTimeRecord = timeSpentTillCheckpoint;
+        }
+
+        if (GameManager.instance.reset && isFalling)
+        {
+            ResetSpike();
+        }
+    }
+
+    void ResetSpike()
+    {
+        if (saveAtWhichCheckpoint != PlayerPrefs.GetInt("CurrentCheckpoint") || PickedTimeRecord > checkpointTimeRecord)
+        {
+            Physics2D.queriesStartInColliders = true;
+            transform.position = initialPosition;
+            isFalling = false;
+        }
+
     }
 
     private void OnCollisionEnter2D(Collision2D other)
