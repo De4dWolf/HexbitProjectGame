@@ -15,6 +15,11 @@ public class LeverWithKey : MonoBehaviour
     private bool fireConsumed = false;
     private int saveAtWhichCheckpoint = -2; // the default value is -2 because -1 is the default value of PlayerPrefs Checkpoint and 0 is the lowest value of cheekpoint
 
+    private float timeSpentTillCheckpoint;
+    private float checkpointTimeRecord = 0;
+    private float timeSpentTillPicked;
+    private float PickedTimeRecord = 0;
+
 
     protected GameObject playerObject;
     protected PlayerManager player;
@@ -69,17 +74,20 @@ public class LeverWithKey : MonoBehaviour
         }
     }
 
-
-
     void Update()
     {
+
+        timeSpentTillCheckpoint += Time.time;
+        timeSpentTillPicked += Time.time;
+
 
         if (GameManager.instance.saving)
         {
             saveAtWhichCheckpoint = PlayerPrefs.GetInt("CurrentCheckpoint");
+            checkpointTimeRecord = timeSpentTillCheckpoint;
         }
 
-        if( GameManager.instance.reset && fireConsumed)
+        if ( GameManager.instance.reset && fireConsumed)
         { 
             fireConsumed = false;
             RevertChanges();
@@ -102,6 +110,7 @@ public class LeverWithKey : MonoBehaviour
                     GameManager.instance.CameraChange(Camera2);
                     player.RedFire -= 1;
                     doorOpen = true;
+                    PickedTimeRecord = timeSpentTillPicked;
                 }
                 else
                 {
@@ -119,7 +128,7 @@ public class LeverWithKey : MonoBehaviour
                     fireConsumed = true;
                     GameManager.instance.CameraChange(Camera2);
                     Particle.SetActive(true);
-
+                    PickedTimeRecord = timeSpentTillPicked;
                     doorOpen = true;
                     player.BlueFire -= 1;
                 }
@@ -151,19 +160,23 @@ public class LeverWithKey : MonoBehaviour
 
     private void RevertChanges()
     {
-        Debug.Log("Execute");
-        if (saveAtWhichCheckpoint != PlayerPrefs.GetInt("CurrentCheckpoint"))
+        if (saveAtWhichCheckpoint != PlayerPrefs.GetInt("CurrentCheckpoint") || PickedTimeRecord > checkpointTimeRecord)
         {
             Particle.SetActive(false);
             doorOpen = false;
 
-            if (IsNeedRedFire)
+            if(fireConsumed)
             {
-                player.RedFire += 1;
-            } else
-            {
-                player.BlueFire += 1;
+                if (IsNeedRedFire)
+                {
+                    player.RedFire += 1;
+                }
+                else
+                {
+                    player.BlueFire += 1;
+                }
             }
+            
         }
     }
 }

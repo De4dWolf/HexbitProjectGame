@@ -13,7 +13,7 @@ public class UIManager : MonoBehaviour
 
     private void Awake()
     {
-        //redFireText = GameObject.Find("Red Fire Text").GetComponent<TextMeshProUGUI>();
+        redFireText = GameObject.Find("Red Fire Text").GetComponent<TextMeshProUGUI>();
         blueFireText = GameObject.Find("Blue Fire Text").GetComponent<TextMeshProUGUI>();
         Instance = this;
     }

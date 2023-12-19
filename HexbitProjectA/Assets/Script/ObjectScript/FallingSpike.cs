@@ -35,6 +35,7 @@ public class FallingSpike : MonoBehaviour
             {
                 if (hit.transform.tag == "Player")
                 {
+                    PickedTimeRecord = timeSpentTillPicked;
                     rb.gravityScale = 5;
                     isFalling = true;
                 }
@@ -53,7 +54,7 @@ public class FallingSpike : MonoBehaviour
             checkpointTimeRecord = timeSpentTillCheckpoint;
         }
 
-        if (GameManager.instance.reset && isFalling)
+        if (GameManager.instance.reset )
         {
             ResetSpike();
         }
