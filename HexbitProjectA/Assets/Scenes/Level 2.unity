@@ -118750,14 +118750,14 @@ MonoBehaviour:
     dialogueLines:
     - character:
         name: NPC
-        iconKanan: {fileID: 0}
-        iconKiri: {fileID: 0}
+        iconKanan: {fileID: 21300000, guid: a4a0009cb9bbc3041808f18b0e6bc234, type: 3}
+        iconKiri: {fileID: 21300000, guid: dac0f9aede6944240be2dc1169e5763c, type: 3}
       line: Hati-hati didepan ada penjaga gerbang yang akan memanah siapapun yang
         berusaha lewat
     - character:
-        name: Timunmas
-        iconKanan: {fileID: 0}
-        iconKiri: {fileID: 0}
+        name: Timun mas
+        iconKanan: {fileID: 21300000, guid: a4a0009cb9bbc3041808f18b0e6bc234, type: 3}
+        iconKiri: {fileID: 21300000, guid: dac0f9aede6944240be2dc1169e5763c, type: 3}
       line: Baiklah aku akan berhati-hati
 --- !u!61 &1974848573
 BoxCollider2D:
