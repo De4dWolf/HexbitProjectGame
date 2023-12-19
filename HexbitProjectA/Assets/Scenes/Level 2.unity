@@ -102062,7 +102062,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6598a691739c5a2439c16c9e414550ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TutorialImage: {fileID: 0}
+  TutorialImage: {fileID: 824854227}
   audioSource: {fileID: 1207185721}
 --- !u!61 &733413225
 BoxCollider2D:
@@ -102536,6 +102536,11 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &824854227 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6899189264117821668, guid: c631ba87e28f704439786b81b8d324a7, type: 3}
+  m_PrefabInstance: {fileID: 859334849}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &842802268
 GameObject:
   m_ObjectHideFlags: 0
@@ -102791,6 +102796,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: UI Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 4979435949254608729, guid: c631ba87e28f704439786b81b8d324a7, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 824854227}
+    - target: {fileID: 4979435949254608729, guid: c631ba87e28f704439786b81b8d324a7, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6311351328327322539, guid: c631ba87e28f704439786b81b8d324a7, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -102871,11 +102884,52 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6902544611167620354, guid: c631ba87e28f704439786b81b8d324a7, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c631ba87e28f704439786b81b8d324a7, type: 3}
+--- !u!95 &859334850 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 1086208834513585688, guid: c631ba87e28f704439786b81b8d324a7, type: 3}
+  m_PrefabInstance: {fileID: 859334849}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &859334851 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5702347876180255725, guid: c631ba87e28f704439786b81b8d324a7, type: 3}
+  m_PrefabInstance: {fileID: 859334849}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &859334852 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9110004872204193299, guid: c631ba87e28f704439786b81b8d324a7, type: 3}
+  m_PrefabInstance: {fileID: 859334849}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &859334853 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2531630350222431637, guid: c631ba87e28f704439786b81b8d324a7, type: 3}
+  m_PrefabInstance: {fileID: 859334849}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &859334854 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7774258410062860963, guid: c631ba87e28f704439786b81b8d324a7, type: 3}
+  m_PrefabInstance: {fileID: 859334849}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &864049330
 GameObject:
   m_ObjectHideFlags: 0
@@ -107526,11 +107580,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5b5640a0a421464cb8e521cc3f27a7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  loadingScreen: {fileID: 0}
-  slider: {fileID: 0}
-  progressText: {fileID: 0}
-  transisi: {fileID: 0}
-  transition: {fileID: 0}
+  loadingScreen: {fileID: 859334854}
+  slider: {fileID: 859334853}
+  progressText: {fileID: 859334852}
+  transisi: {fileID: 859334851}
+  transition: {fileID: 859334850}
   sceneIndex: 3
 --- !u!4 &1385265622
 Transform:
@@ -109559,7 +109613,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1617822656
 Transform:
   m_ObjectHideFlags: 0

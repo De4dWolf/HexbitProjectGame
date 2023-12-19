@@ -5,8 +5,6 @@ using UnityEngine.Experimental.GlobalIllumination;
 
 public class PlayerManager : MonoBehaviour
 {
-
-    [SerializeField] private float fallHeightThreshold = 10f;
     [SerializeField] private GameObject gameOver;
     [SerializeField] private PlayerController playerController;
 

@@ -33,4 +33,9 @@ public class MenuScript : MonoBehaviour
         this.Wait(0.5f, () =>
         optionsMenu.SetActive(false));
     }
+
+    public void Quit()
+    {
+        Application.Quit();
+    }
 }
